@@ -70,7 +70,7 @@ export function Login() {
 
           <button
             type="submit"
-            className="w-[200px] py-3 text-base font-bold rounded-full transition-all hover:opacity-90"
+            className="w-[200px] py-3 text-base font-bold text-white rounded-full transition-all hover:opacity-90 mx-auto block"
             style={{
               background: 'linear-gradient(90deg, #37A8FF 0%, #5DEFFF 100%)',
               boxShadow: '0 4px 15px rgba(93, 239, 255, 0.4)'
