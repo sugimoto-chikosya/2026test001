@@ -7,7 +7,8 @@ import { CashFlow } from "./pages/CashFlow";
 import { ManagementReport } from "./pages/ManagementReport";
 import { Settings } from "./pages/Settings";
 import { Login } from "./pages/Login";
-import { CompanySelection } from "./pages/CompanySelection"; // 👈追加
+import { CompanyLayout } from "./components/CompanyLayout";
+import { CompanySelection } from "./pages/CompanySelection";
 
 export const router = createBrowserRouter([
   // 👇 ログイン（Layoutなし）
@@ -16,12 +17,21 @@ export const router = createBrowserRouter([
     Component: Login,
   },
 
+    // 👇 会社選択専用Layout
+  {
+    path: "/company-selection",
+    Component: CompanyLayout,
+    children: [
+      { index: true, Component: CompanySelection },
+    ],
+  },
+
   // 👇 アプリ本体（Layoutあり）
   {
     path: "/",
     Component: Layout,
     children: [
-      { path: "company-selection", Component: CompanySelection }, // 👈追加
+ 
       { index: true, Component: FuturePrediction },
       { path: "future-prediction", Component: FuturePrediction },
       { path: "profit-loss", Component: ProfitLoss },
