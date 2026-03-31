@@ -8,7 +8,7 @@ export function CompanySelection() {
 
   const handleCompanySelect = (companyId: string) => {
     // 会社選択後、ダッシュボードへ遷移
-    navigate("/future-prediction");
+    navigate("/app/future-prediction");
   };
 
   // 会社選択画面
