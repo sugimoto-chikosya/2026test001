@@ -6,7 +6,8 @@ import { CustomerAnalysis } from "./pages/CustomerAnalysis";
 import { CashFlow } from "./pages/CashFlow";
 import { ManagementReport } from "./pages/ManagementReport";
 import { Settings } from "./pages/Settings";
-import { Login } from "./pages/Login"
+import { Login } from "./pages/Login";
+import { CompanySelection } from "./pages/CompanySelection"; // 👈追加
 
 export const router = createBrowserRouter([
   // 👇 ログイン（Layoutなし）
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
+      { path: "company-selection", Component: CompanySelection }, // 👈追加
       { index: true, Component: FuturePrediction },
       { path: "future-prediction", Component: FuturePrediction },
       { path: "profit-loss", Component: ProfitLoss },

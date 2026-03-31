@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import loginBg from "figma:asset/81beb25c79a175f425d7b7785cc130ef872f57c7.png";
+
 
 export function Login() {
   const navigate = useNavigate();
