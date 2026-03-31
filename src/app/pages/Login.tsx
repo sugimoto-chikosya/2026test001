@@ -24,8 +24,8 @@ export function Login() {
       <div
         className="flex flex-col items-center justify-center"
         style={{
-          width: '600px',
-          height: '600px',
+          width: '500px',
+          height: '500px',
           borderRadius: '50%',
           background: 'radial-gradient(circle at center, #2B4A6F 0%, #1E3550 100%)',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)'
