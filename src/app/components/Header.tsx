@@ -1,11 +1,14 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { useState } from "react";
 import { HeaderIcons } from "../components/icons/HeaderIcons";
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const navItems = [
-    { label: "未来予測", path: "/future-prediction", icon: HeaderIcons.icon01 },
+    { label: "未来予想", path: "/future-prediction", icon: HeaderIcons.icon01 },
     { label: "損益分析", path: "/profit-loss", icon: HeaderIcons.icon02 },
     { label: "得意先別分析", path: "/customer-analysis", icon: HeaderIcons.icon03 },
     { label: "資金繰り", path: "/cash-flow", icon: HeaderIcons.icon04 },
@@ -47,18 +50,17 @@ export function Header() {
             const isActive = location.pathname === item.path;
 
             return (
-<Link
-key={item.path}
-to={item.path}
-className={`relative w-[140px] px-3 py-2 flex flex-col items-center justify-center gap-1 font-semibold transition-colors
-  rounded-b-none
-  ${
-    isActive
-      ? "bg-[var(--color-white)] text-[#2176FF] rounded-t-md"
-      : "text-white/90 hover:bg-white/20 rounded-md hover:rounded-t-md"
-  }
-`}
->
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`relative w-[140px] px-3 py-2 flex flex-col items-center justify-center gap-1 font-semibold transition-colors
+                  ${
+                    isActive
+                      ? "bg-white text-[#2176FF] rounded-t-md"
+                      : "text-white/90 hover:bg-white/20 rounded-md hover:rounded-t-md"
+                  }
+                `}
+              >
                 <Icon className="w-6 h-6" />
                 <span className="text-sm">{item.label}</span>
               </Link>
@@ -66,15 +68,33 @@ className={`relative w-[140px] px-3 py-2 flex flex-col items-center justify-cent
           })}
         </nav>
 
-        {/* アカウント */}
-        <div className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-lg">
-          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <img src="/header-icon07.svg" className="w-6 h-6" />
+        {/* アカウント + ドロワー */}
+        <div className="relative">
+          <div
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-lg cursor-pointer"
+          >
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <img src="/header-icon07.svg" className="w-6 h-6" />
+            </div>
+            <span className="text-white">管理者アカウント</span>
           </div>
-          <span className="text-white">管理者アカウント</span>
+
+          {open && (
+            <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-50">
+              <button
+                onClick={() => {
+                  localStorage.clear(); // 任意（ログイン情報消す）
+                  navigate("/login");
+                }}
+                className="w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                ログアウト
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
   );
 }
-
