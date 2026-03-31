@@ -1,4 +1,5 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
+
 import { Layout } from "./components/Layout";
 import { CompanyLayout } from "./components/CompanyLayout";
 import { Login } from "./pages/Login";
@@ -10,11 +11,22 @@ import { CashFlow } from "./pages/CashFlow";
 import { ManagementReport } from "./pages/ManagementReport";
 import { Settings } from "./pages/Settings";
 
+// ✅ これを必ず分離する（重要）
+function RootRedirect() {
+  return <Navigate to="/login" replace />;
+}
+
 export const router = createBrowserRouter([
   {
     path: "/",
+    Component: RootRedirect,
+  },
+
+  {
+    path: "/login",
     Component: Login,
   },
+
   {
     path: "/company-selection",
     Component: CompanyLayout,
@@ -22,8 +34,9 @@ export const router = createBrowserRouter([
       { index: true, Component: CompanySelection },
     ],
   },
+
   {
-    path: "/",
+    path: "/app",
     Component: Layout,
     children: [
       { path: "future-prediction", Component: FuturePrediction },
