@@ -8,12 +8,12 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   const navItems = [
-    { label: "未来予想", path: "/future-prediction", icon: HeaderIcons.icon01 },
-    { label: "損益分析", path: "/profit-loss", icon: HeaderIcons.icon02 },
-    { label: "得意先別分析", path: "/customer-analysis", icon: HeaderIcons.icon03 },
-    { label: "資金繰り", path: "/cash-flow", icon: HeaderIcons.icon04 },
-    { label: "経営レポート", path: "/management-report", icon: HeaderIcons.icon05 },
-    { label: "設定・データ管理", path: "/settings", icon: HeaderIcons.icon06 },
+    { label: "未来予想", path: "/app/future-prediction", icon: HeaderIcons.icon01 },
+    { label: "損益分析", path: "/app/profit-loss", icon: HeaderIcons.icon02 },
+    { label: "得意先別分析", path: "/app/customer-analysis", icon: HeaderIcons.icon03 },
+    { label: "資金繰り", path: "/app/cash-flow", icon: HeaderIcons.icon04 },
+    { label: "経営レポート", path: "/app/management-report", icon: HeaderIcons.icon05 },
+    { label: "設定・データ管理", path: "/app/settings", icon: HeaderIcons.icon06 },
   ];
 
   return (
@@ -57,7 +57,7 @@ export function Header() {
                   ${
                     isActive
                       ? "bg-white text-[#2176FF] rounded-t-md"
-                      : "text-white/90 hover:bg-white/20 rounded-md hover:rounded-t-md"
+                      : "text-white/90 hover:bg-white/20 rounded-t-md"
                   }
                 `}
               >

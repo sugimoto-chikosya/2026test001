@@ -43,7 +43,7 @@ export function Login() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-2 rounded-md border-none outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 transition"
               placeholder=""
             />
           </div>
@@ -54,7 +54,7 @@ export function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 rounded-md border-none outline-none"
+              className="w-full px-4 py-2 rounded-md bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:border-blue-400 transition"
               placeholder=""
             />
           </div>
@@ -70,7 +70,7 @@ export function Login() {
 
           <button
             type="submit"
-            className="w-[200px] py-3 text-base font-bold text-white rounded-full transition-all hover:opacity-90 mx-auto block"
+            className="w-[250px] py-3 text-base font-bold text-white rounded-full transition-all hover:opacity-90 mx-auto block"
             style={{
               background: 'linear-gradient(90deg, #37A8FF 0%, #5DEFFF 100%)',
               boxShadow: '0 4px 15px rgba(93, 239, 255, 0.4)'

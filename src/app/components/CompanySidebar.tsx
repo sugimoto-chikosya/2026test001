@@ -16,7 +16,7 @@ export function CompanySidebar() {
     <aside
       className="w-64 p-4 h-screen"
       style={{
-        backgroundColor: '#E9EFFA',
+        background: 'linear-gradient(to bottom, #e6f7fbff, #b1e6faff)',
         boxShadow: '2px 0 8px rgba(0, 0, 0, 0.05)'
       }}
     >
@@ -27,7 +27,7 @@ export function CompanySidebar() {
             to={item.path}
             className="block px-4 py-3 transition-colors hover:bg-white/30 font-semibold"
             style={{
-              color: '#333',
+              color: '#025AA2',
               borderBottom: '1px solid #ffffff'
             }}
           >

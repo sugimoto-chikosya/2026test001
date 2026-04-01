@@ -23,13 +23,23 @@ export function CompanyHeader({ showNavigation = false }: CompanyHeaderProps) {
         background: 'linear-gradient(90deg, #0057DB 0%, #37A8FF 50%, #5DEFFF 100%)'
       }}
     >
-      <div className="flex items-center gap-8 w-full max-w-[1920px] mx-auto">
+
+      {/* オーバーレイ画像 */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/bg-logo.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "260px",
+          backgroundPosition: "left center",
+          opacity: 0.2,
+        }}
+      />
+      {/* コンテンツ */}
+      <div className="flex items-center gap-3 justify-between w-full max-w-[1920px] mx-auto relative">
         {/* ロゴ */}
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-xl">経</span>
-          </div>
-          <span className="font-bold text-xl text-white">経営ダッシュボード</span>
+        <div className="flex items-center gap-2 px-4 py-2">
+          <span className="font-bold text-3xl text-white">B-Insight</span>
         </div>
 
         {/* ナビゲーション（会社選択画面では非表示） */}

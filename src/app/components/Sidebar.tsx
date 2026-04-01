@@ -8,39 +8,39 @@ export function Sidebar() {
 
   // パスに応じてメニュー項目を切り替え
   const getMenuItems = () => {
-    if (location.pathname === "/profit-loss") {
+    if (location.pathname === "/app/profit-loss") {
       return [
-        { label: "損益比較", path: "/profit-loss?view=comparison" },
-        { label: "月次損益（来期予測）", path: "/profit-loss?view=next" },
+        { label: "損益比較", path: "/app/profit-loss?view=comparison" },
+        { label: "月次損益（来期予測）", path: "/app/profit-loss?view=next" },
       ];
     }
 
-    if (location.pathname === "/customer-analysis") {
+    if (location.pathname === "/app/customer-analysis") {
       return [
-        { label: "損益比較", path: "/customer-analysis?view=comparison" },
-        { label: "科目別（月次推移）", path: "/customer-analysis?view=monthly" },
-        { label: "科目明細", path: "/customer-analysis?view=detail" },
+        { label: "損益比較", path: "/app/customer-analysis?view=comparison" },
+        { label: "科目別（月次推移）", path: "/app/customer-analysis?view=monthly" },
+        { label: "科目明細", path: "/app/customer-analysis?view=detail" },
       ];
     }
 
-    if (location.pathname === "/future-prediction") {
+    if (location.pathname === "/app/future-prediction") {
       return [
-        { label: "月次損益（当期実績予測）", path: "/profit-loss?view=current" },
-        { label: "月次損益（来期予測）", path: "/profit-loss?view=next" },
+        { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=current" },
+        { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
       ];
     }
 
     // デフォルト（未来予測）
     return [
-      { label: "月次損益（当期実績予測）", path: "/profit-loss?view=current" },
-      { label: "月次損益（来期予測）", path: "/profit-loss?view=next" },
+      { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=current" },
+      { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
     ];
   };
 
   const menuItems = getMenuItems();
 
   // 予測入力を表示するかどうかを判定
-  const showPredictionInput = location.pathname !== "/customer-analysis";
+  const showPredictionInput = location.pathname !== "/app/customer-analysis";
 
   const predictionSubItems = [
     { label: "期初予測の確定", path: "/prediction/initial" },
