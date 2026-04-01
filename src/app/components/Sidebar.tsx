@@ -8,25 +8,41 @@ export function Sidebar() {
 
   // パスに応じてメニュー項目を切り替え
   const getMenuItems = () => {
+    if (location.pathname === "/app/future-prediction") {
+      return [
+        { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=index" },
+        { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
+      ];
+    }
+
     if (location.pathname === "/app/profit-loss") {
       return [
-        { label: "損益比較", path: "/app/profit-loss?view=comparison" },
-        { label: "月次損益（来期予測）", path: "/app/profit-loss?view=next" },
+        { label: "損益比較", path: "/app/profit-loss?view=index" },
+        { label: "科目別（月次推移）", path: "/app/profit-loss?view=monthly" },
+        { label: "科目明細", path: "/app/profit-loss?view=detail" },
       ];
     }
 
     if (location.pathname === "/app/customer-analysis") {
       return [
-        { label: "損益比較", path: "/app/customer-analysis?view=comparison" },
-        { label: "科目別（月次推移）", path: "/app/customer-analysis?view=monthly" },
-        { label: "科目明細", path: "/app/customer-analysis?view=detail" },
+        { label: "得意先別構成比", path: "/app/customer-analysis?view=index" },
+        { label: "得意先別年度比較", path: "/app/customer-analysis?view=ranking" },
+        { label: "得意先別月次推移", path: "/app/customer-analysis?view=monthly" },
       ];
     }
 
-    if (location.pathname === "/app/future-prediction") {
+        if (location.pathname === "/app/cash-flow") {
       return [
-        { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=current" },
-        { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
+        { label: "シミュレーション", path: "/app/cash-flow?view=index" },
+        { label: "借入一覧", path: "/app/cash-flow?view=borrow" },
+        { label: "科目明細", path: "/app/cash-flow?view=finance" },
+      ];
+    }
+
+            if (location.pathname === "/app/management-report") {
+      return [
+        { label: "当期決算レポート", path: "/app/management-report?view=index" },
+        { label: "前期決算レポート", path: "/app/management-report?view=last" },
       ];
     }
 
@@ -40,7 +56,7 @@ export function Sidebar() {
   const menuItems = getMenuItems();
 
   // 予測入力を表示するかどうかを判定
-  const showPredictionInput = location.pathname !== "/app/customer-analysis";
+  const showPredictionInput = location.pathname === "/app/future-prediction";
 
   const predictionSubItems = [
     { label: "期初予測の確定", path: "/prediction/initial" },
