@@ -18,7 +18,7 @@ export function CompanyHeader({ showNavigation = false }: CompanyHeaderProps) {
 
   return (
     <header
-      className="w-full h-[100px] border-b border-gray-200 flex items-center px-8"
+      className="w-full h-[100px] border-b border-gray-200 flex items-center px-8 relative"
       style={{
         background: 'linear-gradient(90deg, #0057DB 0%, #37A8FF 50%, #5DEFFF 100%)'
       }}
