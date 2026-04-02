@@ -26,7 +26,7 @@ export function Header() {
       icon: HeaderIcons.icon05,
     },
     {
-      label: "設定・データ管理",
+      label: "データ管理",
       path: "/app/settings",
       icon: HeaderIcons.icon06,
     },
