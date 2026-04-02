@@ -18,7 +18,7 @@ export function CompanyHeader({ showNavigation = false }: CompanyHeaderProps) {
 
   return (
     <header
-      className="w-full h-[100px] border-b border-gray-200 flex items-center px-8 relative"
+      className="w-full h-[80px] border-b border-gray-200 flex items-center px-8 relative"
       style={{
         background: 'linear-gradient(90deg, #0057DB 0%, #37A8FF 50%, #5DEFFF 100%)'
       }}
@@ -35,10 +35,10 @@ export function CompanyHeader({ showNavigation = false }: CompanyHeaderProps) {
           opacity: 0.2,
         }}
       />
-      {/* コンテンツ */}
-      <div className="flex items-center gap-3 justify-between w-full max-w-[1920px] mx-auto relative">
-        {/* ロゴ */}
-        <div className="flex items-center gap-2 px-4 py-2">
+      
+      <div className="flex w-full items-center">
+        {/* 👈 左：サイドバーと揃える */}
+        <div className="w-[280px] shrink-0 px-4 flex items-center">
           <span className="font-bold text-3xl text-white">B-Insight</span>
         </div>
 

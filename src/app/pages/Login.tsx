@@ -22,7 +22,7 @@ export function Login() {
     >
       {/* ログインフォーム円形 */}
       <div
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center shrink-0"
         style={{
           width: '500px',
           height: '500px',

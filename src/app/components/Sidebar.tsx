@@ -6,12 +6,23 @@ export function Sidebar() {
   const location = useLocation();
   const [isPredictionInputOpen, setIsPredictionInputOpen] = useState(false);
 
+  // 👇 アクティブ判定
+  const isActive = (path: string) => {
+    return location.pathname + location.search === path;
+  };
+
   // パスに応じてメニュー項目を切り替え
   const getMenuItems = () => {
     if (location.pathname === "/app/future-prediction") {
       return [
-        { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=index" },
-        { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
+        {
+          label: "月次損益（当期実績予測）",
+          path: "/app/future-prediction?view=index",
+        },
+        {
+          label: "月次損益（来期予測）",
+          path: "/app/future-prediction?view=next",
+        },
       ];
     }
 
@@ -26,12 +37,18 @@ export function Sidebar() {
     if (location.pathname === "/app/customer-analysis") {
       return [
         { label: "得意先別構成比", path: "/app/customer-analysis?view=index" },
-        { label: "得意先別年度比較", path: "/app/customer-analysis?view=ranking" },
-        { label: "得意先別月次推移", path: "/app/customer-analysis?view=monthly" },
+        {
+          label: "得意先別年度比較",
+          path: "/app/customer-analysis?view=ranking",
+        },
+        {
+          label: "得意先別月次推移",
+          path: "/app/customer-analysis?view=monthly",
+        },
       ];
     }
 
-        if (location.pathname === "/app/cash-flow") {
+    if (location.pathname === "/app/cash-flow") {
       return [
         { label: "シミュレーション", path: "/app/cash-flow?view=index" },
         { label: "借入一覧", path: "/app/cash-flow?view=borrow" },
@@ -39,17 +56,26 @@ export function Sidebar() {
       ];
     }
 
-            if (location.pathname === "/app/management-report") {
+    if (location.pathname === "/app/management-report") {
       return [
-        { label: "当期決算レポート", path: "/app/management-report?view=index" },
+        {
+          label: "当期決算レポート",
+          path: "/app/management-report?view=index",
+        },
         { label: "前期決算レポート", path: "/app/management-report?view=last" },
       ];
     }
 
     // デフォルト（未来予測）
     return [
-      { label: "月次損益（当期実績予測）", path: "/app/future-prediction?view=current" },
-      { label: "月次損益（来期予測）", path: "/app/future-prediction?view=next" },
+      {
+        label: "月次損益（当期実績予測）",
+        path: "/app/future-prediction?view=current",
+      },
+      {
+        label: "月次損益（来期予測）",
+        path: "/app/future-prediction?view=next",
+      },
     ];
   };
 
@@ -66,21 +92,27 @@ export function Sidebar() {
 
   return (
     <aside
-      className="w-64 p-4 h-screen"
+      className="w-64 h-screen shrink-0"
       style={{
-        background: 'linear-gradient(to bottom, #0057DB, #37A8FF, #5DEFFF)',
-        boxShadow: '2px 0 8px rgba(0, 0, 0, 0.05)'
+        background: "linear-gradient(to bottom, #0057DB, #37A8FF, #5DEFFF)",
+        boxShadow: "2px 0 8px rgba(0, 0, 0, 0.05)",
       }}
     >
-      <nav className="space-y-0">
+      <nav className="pl-4 py-4 space-y-0">
         {menuItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
-            className="block px-4 py-6 transition-colors hover:bg-white/30 font-semibold"
+            className={`
+    block px-4 py-6 font-semibold transition-all
+    ${
+      isActive(item.path)
+        ? "bg-white text-blue-600 rounded-l-lg -mr-2 z-10 relative"
+        : "text-white hover:bg-white/20"
+    }
+  `}
             style={{
-              color: '#ffffffff',
-              borderBottom: '1px solid #ffffff4b'
+              borderBottom: "1px solid #ffffff4b",
             }}
           >
             {item.label}
@@ -93,8 +125,8 @@ export function Sidebar() {
               onClick={() => setIsPredictionInputOpen(!isPredictionInputOpen)}
               className="w-full flex items-center justify-between px-4 py-3 transition-colors hover:bg-white/30 font-semibold"
               style={{
-                color: '#ffffffff',
-                borderBottom: '1px solid #ffffff4b'
+                color: "#ffffffff",
+                borderBottom: "1px solid #ffffff4b",
               }}
             >
               <span>予測入力</span>
@@ -113,8 +145,11 @@ export function Sidebar() {
                     to={item.path}
                     className="block px-6 py-2.5 transition-colors hover:bg-white/30 text-sm"
                     style={{
-                      color: '#ffffffff',
-                      borderBottom: index < predictionSubItems.length - 1 ? '1px solid #ffffff4b' : 'none'
+                      color: "#ffffffff",
+                      borderBottom:
+                        index < predictionSubItems.length - 1
+                          ? "1px solid #ffffff4b"
+                          : "none",
                     }}
                   >
                     {item.label}
